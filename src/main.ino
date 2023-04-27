@@ -20,7 +20,7 @@
 #include <WiFiClientSecure.h>
 
 const char* ssid = "551D_gl0up1_p01n7";
-const char* password = "W1f1_4cc35_p01n7";
+const char* password = "W1f1_4cc355_p01n7";
 const int httpPort  = 80;
 const int httpsPort = 443;
 const char* fp_api_github_com = "df b2 29 c6 a6 38 1a 59 9d c9 ad 92 2d 26 f5 3c 83 8f a5 87"; // as of 25.11.2020
@@ -101,8 +101,6 @@ const char* time_zone = "CET-1CEST,M3.5.0,M10.5.0/3";  // TimeZone rule for Euro
 
 //
 
-
-
 void printLocalTime()
 {
   struct tm timeinfo;
@@ -125,11 +123,6 @@ void timeavailable(struct timeval *t)
   Serial.println("Got time adjustment from NTP!");
   printLocalTime();
 }
-
-
-
-
-
 
 String httpGETRequest(const char* serverName) {
   WiFiClient client;
@@ -159,8 +152,11 @@ String httpGETRequest(const char* serverName) {
 }
 
 void get_weater() {
-
-    
+  //get weather data from openweathermap.org
+  //https://openweathermap.org/current
+  //https://openweathermap.org/weather-conditions
+  //https://openweathermap.org/weather-data
+   
 /*    else {
       Serial.println("WiFi Disconnected");
     }
@@ -168,8 +164,6 @@ void get_weater() {
 
 
 }
-
-
 
 void display_weather() {
 //put the next lines in get_weather fcn
@@ -248,12 +242,10 @@ void display_weather() {
 
 }
 
-
 void setup() {
   Serial.begin(115200);
   display.init(115200);
   WiFi.begin(ssid, password);
-
 
   Serial.println("Connecting");
   while(WiFi.status() != WL_CONNECTED) {
